@@ -25,6 +25,12 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride('_method'))
 
+//Useless Middleware
+app.use('/jo', (req, res, next) => {
+    res.send("go to /campgrounds")
+    next()
+})
+
 app.listen(3000, () => {
     console.log("listening on port 3000")
 })
@@ -74,4 +80,8 @@ app.get('/makecampground', async (req, res) => {
     const camp = new Campground({title: 'My Backyard', description: 'cheap camping'})
     await camp.save()
     res.send(camp)
+})
+
+app.use((req, res) => {
+    res.send("404 NOT FOUND")
 })
