@@ -88,3 +88,8 @@ app.get('/makecampground', async (req, res) => {
 app.use((req, res) => {
     res.status(404).send("404 NOT FOUND")
 })
+
+//Error handler
+app.use((err, req, res, next) => {
+
+})
